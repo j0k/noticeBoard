@@ -47,5 +47,26 @@
         </div>
       </div>
     </div>
+
+    <script>
+    function postData(){
+      announce = {
+        type: 12,
+        data: {
+          data: [
+            { key: $('#d_key').val() + "_author", value: $('#d_author').val(), type: "string" },
+            { key: $('#d_key').val() + "_announce", value: $('#d_news').val(), type: "string" },
+          ],
+          fee: {
+            "tokens": "0.01",
+            "assetId": "WAVES"
+          },
+			    senderPublicKey: '3j9uCXRw5m7EeXmvSQ4gL3ztna9Rc5DyaqENjNbURNvd'
+        }
+      }
+
+      WavesKeeper.signAndPublishTransaction(announce)
+    }
+    </script>
   </body>
 </html>
