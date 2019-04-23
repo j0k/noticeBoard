@@ -9,9 +9,13 @@ func notice(note:String, author:String) = {
         case _     => 0
     }
 
-    let numbData = DataEntry("currentNNote", currentNNote+1)
-    let noteData = DataEntry("n_" + toString(currentNNote+1), note)
-    let authData = DataEntry("a_" + toString(currentNNote+1), author)
-    let addrData = DataEntry("addr_" + toBase58String(i.caller.bytes), author)
-    WriteSet([numbData, noteData, authData, addrData])    
+    let currentNextNote = currentNNote + 1
+    let currentNextNoteS = toString(currentNextNote)
+
+    let numbData = DataEntry("currentNNote", currentNextNote)
+    let noteData = DataEntry("n_" + currentNextNoteS, note)
+    let authData = DataEntry("a_" + currentNextNoteS, author)
+    let addrData = DataEntry("addr_" + currentNextNoteS + "_" + toBase58String(i.caller.bytes), author)
+
+    WriteSet([numbData, noteData, authData, addrData])
 }
