@@ -1,0 +1,16 @@
+{-# STDLIB_VERSION 3 #-}
+{-# CONTENT_TYPE EXPRESSION #-}
+{-# SCRIPT_TYPE ACCOUNT #-}
+
+let creatorAddr = "3MuFKZW7iyQpycu4gBqswbPoPxZG8usXnvC" #this.bytes.toBase58String()
+let txAddr      = tx.sender.bytes.toBase58String()
+
+match (tx) {
+    case dx:DataTransaction =>
+
+        dx.data
+        true
+    case scTx:SetScriptTransaction =>
+        txAddr == creatorAddr
+    case _ => false
+}

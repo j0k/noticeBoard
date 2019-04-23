@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="">
-      <label for="basic-url">Describe your news</label>
+      <label for="basic-url">Describe your news of data feed on <a href="http://wavesexplorer.com/testnet/address/3MuFKZW7iyQpycu4gBqswbPoPxZG8usXnvC">account</a></label>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">key:</span>
@@ -67,6 +67,9 @@
 
       WavesKeeper.signAndPublishTransaction(announce)
     }
+
+    $( '#button-post' ).click(postData);
+
     </script>
   </body>
 </html>
