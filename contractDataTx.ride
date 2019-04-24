@@ -3,12 +3,14 @@
 {-# SCRIPT_TYPE ACCOUNT #-}
 
 let creatorAddr = "3MuFKZW7iyQpycu4gBqswbPoPxZG8usXnvC" #this.bytes.toBase58String()
-let txAddr      = tx.sender.bytes.toBase58String()
+let txAddr      = tx.sender #.toBase58String()
+
+let me = addressFromPublicKey(tx.senderPublicKey)
 
 match (tx) {
     case dx:DataTransaction =>
         true
     case scTx:SetScriptTransaction =>
-        txAddr == creatorAddr
+        (txAddr == me) && sigVerify(tx.bodyBytes, tx.proofs[0], tx.senderPublicKey)
     case _ => false
 }
