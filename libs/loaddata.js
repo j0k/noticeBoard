@@ -46,3 +46,29 @@ function makeANoteWithWaves(note, author){
 
   WavesKeeper.signAndPublishTransaction(noteWithWaves)
 }
+
+// WavesKeeper.signAndPublishTransaction({
+//         type: 16,
+//         data: {
+//              fee: {
+//                  "tokens": "0.05",
+//                  "assetId": "WAVES"
+//              },
+//              dApp: '3Mpn5eiqDUw7LjoFaqrcS3cBAqEKm8cxokM',
+//              call: {
+//              		function: 'note',
+//              		args: [
+//              		    {
+//              		      "type": "string",
+//              		      "value": "Hello swk"
+//              		    },{
+//              		      "type": "string",
+//              		      "value": "me"
+//              		    }]
+//              	}, payment: [{assetId: "4p2Vu1KsAqhNwh2ehWFp7fEwvjv6N14HQF3eC9FeFhM6", tokens: 500}]
+//         }
+//    }).then((tx) => {
+//         console.log("Ура! Я выполнил скрипт!!!");
+//    }).catch((error) => {
+//         console.error("Что-то пошло не так", error);
+//    });
