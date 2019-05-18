@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>board post</title>
+    <script src="./libs/waves_transactions.js"></script>
+    <script src="./libs/waves_sign.js"></script>
+    <script src="./libs/loaddata.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  </head>
+  <body>
+    <div class="">
+      <label for="basic-url">Describe your news of data feed on <a href="http://wavesexplorer.com/testnet/address/3MuFKZW7iyQpycu4gBqswbPoPxZG8usXnvC">account</a></label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">key:</span>
+        </div>
+        <input type="text" class="form-control" id="d_key" aria-describedby="basic-addon3">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">announce:</span>
+        </div>
+        <textarea class="form-control" id="d_news" aria-label="With textarea"></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">author:</span>
+        </div>
+        <input type="text" class="form-control" id="d_author" aria-label="Amount (to the nearest dollar)">
+      </div>
+
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button" id="button-post">Post news</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    function postData(){
+      announce = {
+        type: 12,
+        data: {
+          data: [
+            { key: $('#d_key').val() + "_author", value: $('#d_author').val(), type: "string" },
+            { key: $('#d_key').val() + "_announce", value: $('#d_news').val(), type: "string" },
+          ],
+          fee: {
+            "tokens": "0.01",
+            "assetId": "WAVES"
+          },
+			    senderPublicKey: '3j9uCXRw5m7EeXmvSQ4gL3ztna9Rc5DyaqENjNbURNvd'
+        }
+      }
+
+      WavesKeeper.signAndPublishTransaction(announce)
+    }
+
+    $( '#button-post' ).click(postData);
+
+    </script>
+  </body>
+</html>
