@@ -1,0 +1,115 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>board post</title>
+  <script src="./libs/waves_transactions.js"></script>
+  <script src="./libs/waves_sign.js"></script>
+  <script src="./libs/loaddata.js"></script>
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <style media="screen">
+    body {
+      align: center;
+      text-align:center;
+      margin:auto;
+      width:80%;
+    }
+
+    .centered {
+      margin: auto;
+      text-align: center;
+    }
+
+    .news-text {
+      text-align: left;
+    }
+
+    section {
+      border: 1px dashed black;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1><img src="imgs/timer2.gif" alt=""><br /> NEWS BOARD </h1>
+  <section>
+    <h2>Your announcement</h2>
+
+
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><b>*</b> news:</span>
+      </div>
+      <input type="text" class="form-control important" id="news" name="news-text">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-news-random"><i class='glyphicon glyphicon-question-sign'></i></button>
+      </div>
+    </div>
+
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><b>*</b> @contact:</span>
+      </div>
+      <input type="text" class="form-control important" id="contact" name="contact">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-contact-random"><i class='glyphicon glyphicon-question-sign'></i></button>
+      </div>
+    </div>
+
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">tags:</span>
+      </div>
+      <input type="text" class="form-control generated" id="tags" name="tags">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addr-clear"><i class='glyphicon glyphicon-question-sign'></i></button>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-light btn-secondary active">
+        <input type="radio" name="opt_search" id="option1" value="public" autocomplete="off" checked> WAVES
+      </label>
+      <label class="btn btn-light btn-secondary">
+        <input type="radio" name="opt_search" id="option2" value="TT" autocomplete="off"> NEWSCOIN
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg btn-default" onclick="submitButton()">Submit</button>
+  </section>
+  <p/>
+  <section>
+    <h2>Fresh news</h2>
+
+    <ul id="allnews">
+      <li>
+        <div class="news-text">
+        <p>
+        Hello
+        </p>
+        </div>
+          - author
+      </li>
+
+    </ul>
+
+  </section>
+
+</body>
+
+<script type="text/javascript">
+  getAccData();
+  setInterval(getAccData, 10000);
+</script>
+
+</html>
