@@ -55,6 +55,13 @@ function submitButton(){
   var news = $('#news').val()
   var contact = $('#contact').val()
 
+
+  var amount = 500;
+  var tokens = "4p2Vu1KsAqhNwh2ehWFp7fEwvjv6N14HQF3eC9FeFhM6"
+  if ($("#option1")["0"].checked){
+    amount = "0.005"
+    tokens = "WAVES"
+  }
   WavesKeeper.signAndPublishTransaction({
           type: 16,
           data: {
@@ -73,7 +80,7 @@ function submitButton(){
                		      "type": "string",
                		      "value": contact
                		    }]
-               	}, payment: [{assetId: "4p2Vu1KsAqhNwh2ehWFp7fEwvjv6N14HQF3eC9FeFhM6", tokens: 500}]
+               	}, payment: [{assetId: tokens, tokens: amount}]
           }
      }).then((tx) => {
           console.log("Fine");
@@ -147,14 +154,10 @@ function checkUpdates(){
     board = document.getElementById("allnews");
     news = newsData["A"]
     arr  = Object.keys(news).sort(function(a,b){parseInt(b) - parseInt(a)}).reverse()
-    news = newsData["A"]
 
-    console.log(arr)
     for(var i in arr){
-      e =arr[i]
-      console.log(news);
-      console.log(e);
-      board.appendChild(addListNode(news[e]["news"],news[e]["author"]));
+      e = arr[i]
+      board.appendChild(addListNode(news[e]["news"], news[e]["author"]));
     }
   }
 }
